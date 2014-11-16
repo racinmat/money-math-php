@@ -39,7 +39,7 @@
     "require": {
         "php": ">=5.4.0",
         "ext-gmp": "*",
-        "nette/utils": "2.2.x-dev"
+        "nette/utils": "2.2.*"
     },
 
     "require-dev": {
