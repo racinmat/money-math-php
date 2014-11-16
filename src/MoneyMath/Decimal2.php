@@ -59,7 +59,11 @@ class Decimal2 extends Object {
     }
 
     public static function from($number){
+        if ($number instanceof Decimal2) {
+            return new static($number->__toString());
+        } else {
         return new static($number);
+        }
     }
 //--------------------------------------------------------------------------------------------------
 
