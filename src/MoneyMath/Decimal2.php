@@ -1,12 +1,13 @@
 <?php
 
 namespace MoneyMath;
+use Nette\Object;
 
 /**
  * An arbitrary big decimal number with 2-digit fraction part, such as 399.99, 100.00, or
  * 99999999999999999999999999999999999999999999999999999999999999999999999999999999.99
  */
-class Decimal2 {
+class Decimal2 extends Object {
     const SEPARATOR = '.';
 
     /**
@@ -36,7 +37,7 @@ class Decimal2 {
             $parts[1] .= '0';
         }
 
-        $is_negative = ('-' === trim($stringRepresentation[0]));
+        $is_negative = ('-' === trim(substr($stringRepresentation,0,1)));
 
         $this->cents = gmp_strval(
             gmp_add(
@@ -57,6 +58,9 @@ class Decimal2 {
         }
     }
 
+    public static function from($number){
+        return new static($number);
+    }
 //--------------------------------------------------------------------------------------------------
 
     /**
@@ -205,7 +209,7 @@ class Decimal2 {
      * @param integer $byIntFactor
      * @return Decimal2
      */
-    public static function multiply(Decimal2 $decimal, $byIntFactor) {
+    public static function staticMultiply(Decimal2 $decimal, $byIntFactor) {
         $ret = new Decimal2('0');
 
         $ret->cents = gmp_strval(
@@ -329,6 +333,10 @@ class Decimal2 {
         );
     }
 
+    public function compare(Decimal2 $other) {
+        return $this->cmp($this, $other);
+    }
+
     /**
      * @param Decimal2 $d
      * @return Decimal2
@@ -358,4 +366,42 @@ class Decimal2 {
             $divider,
             GMP_ROUND_ZERO);
     }
+
+    public function add($number) {
+        if ($number instanceof Decimal2) {
+            return self::plus($this, $number);
+        } else {
+            return $this->add(Decimal2::from($number));
+        }
+
+    }
+
+    public function subtract(Decimal2 $number){
+        if ($number instanceof Decimal2) {
+            return self::minus($this, $number);
+        } else {
+            return $this->subtract(Decimal2::from($number));
+        }
+    }
+
+    public function multiply(Decimal2 $number){
+        if ($number instanceof Decimal2) {
+            return self::mul($this, $number);
+        } else {
+            return $this->multiply(Decimal2::from($number));
+        }
+    }
+
+    public function divide(Decimal2 $number){
+        if ($number instanceof Decimal2) {
+            return self::div($this, $number);
+        } else {
+            return $this->divide(Decimal2::from($number));
+        }
+    }
+
+    public function multiplyBy($integer){
+        return self::staticMultiply($this, $integer);
+    }
+
 }

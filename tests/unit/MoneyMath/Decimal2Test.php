@@ -110,22 +110,22 @@ class Decimal2Test extends \PHPUnit_Framework_TestCase {
 
     public function testDecimalCanBeMultiplied1() {
         $d = new Decimal2('-1.99');
-        $this->assertD(Decimal2::multiply($d, 100), -199, 0, '-199.00');
+        $this->assertD(Decimal2::staticMultiply($d, 100), -199, 0, '-199.00');
     }
 
     public function testDecimalCanBeMultiplied2() {
         $d = new Decimal2('150');
-        $this->assertD(Decimal2::multiply($d, 2), 300, 0, '300.00');
+        $this->assertD(Decimal2::staticMultiply($d, 2), 300, 0, '300.00');
     }
 
     public function testDecimalCanBeMultiplied3() {
         $d = new Decimal2('1.55');
-        $this->assertD(Decimal2::multiply($d, -10), -15, -50, '-15.50');
+        $this->assertD(Decimal2::staticMultiply($d, -10), -15, -50, '-15.50');
     }
 
     public function testDecimalCanBeMultiplied4() {
         $d = new Decimal2('210.0');
-        $this->assertD(Decimal2::multiply($d, 5), 1050, 0, '1050.00');
+        $this->assertD(Decimal2::staticMultiply($d, 5), 1050, 0, '1050.00');
     }
 
 //--------------------------------------------------------------------------------------------------
@@ -138,17 +138,17 @@ class Decimal2Test extends \PHPUnit_Framework_TestCase {
 
     public function testSurvivesBigNumbers2() {
         $a = new Decimal2('9000000000.20');
-        $this->assertD(Decimal2::multiply($a, 1), '9000000000', 20, '9000000000.20');
+        $this->assertD(Decimal2::staticMultiply($a, 1), '9000000000', 20, '9000000000.20');
     }
 
     public function testSurvivesBigNumbers3() {
         $a = new Decimal2('9000000000.20');
-        $this->assertD(Decimal2::multiply($a, 5), '45000000001', 0, '45000000001.00');
+        $this->assertD(Decimal2::staticMultiply($a, 5), '45000000001', 0, '45000000001.00');
     }
 
     public function testSurvivesBigNumbers4() {
         $a = new Decimal2('9000000000.20');
-        $this->assertD(Decimal2::multiply($a, -5), '-45000000001', 0, '-45000000001.00');
+        $this->assertD(Decimal2::staticMultiply($a, -5), '-45000000001', 0, '-45000000001.00');
     }
 
     public function testSurvivesBigNumbers5() {

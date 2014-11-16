@@ -61,7 +61,7 @@ Now you can add the Composer's autoloader, and you will have access to the `Mone
     strval(Decimal2::sum([$a, $a, $b]))         // "11.50"
     strval(Decimal2::avg([$a, $b]))             // "4.00"
     strval(Decimal2::minus($a, $b))             // "-1.00"
-    strval(Decimal2::multiply($a, 2))           // "7.00"
+    strval(Decimal2::staticMultiply($a, 2))           // "7.00"
     strval(Decimal2::mul($a, $b))               // "15.75"
 
     strval(Decimal2::div($a, $b))               // "0.78"
