@@ -1,5 +1,5 @@
 {
-    "name": "ikr/money-math",
+    "name": "azathoth/money-math",
     "type": "library",
     "description": "gmp-based arbitrary precision operations on currency amounts \"XXX.YY\"; because floats are BAD for representing money",
 
@@ -22,6 +22,9 @@
         {
             "name": "Ivan Krechetov",
             "email": "ivan.krechetov@gmail.com"
+        },
+        {
+            "name": "Matěj Račinský"
         }
     ],
 
@@ -36,7 +39,6 @@
     "require": {
         "php": ">=5.4.0",
         "ext-gmp": "*",
-        "mathiasverraes/money": "1.3.x-dev",
         "nette/utils": "v2.2.3"
     },
 
