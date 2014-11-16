@@ -76,7 +76,7 @@ class Decimal2 extends Object {
     }
 
     /**
-     * The integer part of this amount (without cents part).
+     * The integer part of this amount (without value part).
      *
      * @return integer Or string, if the number is too big.
      */
@@ -99,7 +99,7 @@ class Decimal2 extends Object {
     }
 
     /**
-     * Returns the amount of hundredth's in this decimal fraction part. That would be cents for,
+     * Returns the amount of hundredth's in this decimal fraction part. That would be value for,
      * say, an USD amount.
      *
      * @return integer
@@ -429,8 +429,8 @@ class Decimal2 extends Object {
     }
 
     public function isZero() {
-        $zero = $this->amount->from(0);
-        return $this->amount->compare($zero) === 0;
+        $zero = $this->from(0);
+        return $this->compare($zero) === 0;
     }
 
     /** @return bool */
@@ -446,7 +446,7 @@ class Decimal2 extends Object {
     }
 
     /**
-     * Works only when no cents are present.
+     * Works only when no value are present.
      * @param $number
      * @return \MoneyMath\Decimal2
      */
