@@ -367,6 +367,10 @@ class Decimal2 extends Object {
             GMP_ROUND_ZERO);
     }
 
+    /**
+     * @param int|string|float|Decimal2 $number
+     * @return \MoneyMath\Decimal2
+     */
     public function add($number) {
         if ($number instanceof Decimal2) {
             return self::plus($this, $number);
@@ -376,7 +380,11 @@ class Decimal2 extends Object {
 
     }
 
-    public function subtract(Decimal2 $number){
+    /**
+     * @param int|string|float|Decimal2 $number
+     * @return \MoneyMath\Decimal2
+     */
+    public function subtract($number){
         if ($number instanceof Decimal2) {
             return self::minus($this, $number);
         } else {
@@ -384,7 +392,11 @@ class Decimal2 extends Object {
         }
     }
 
-    public function multiply(Decimal2 $number){
+    /**
+     * @param int|string|float|Decimal2 $number
+     * @return \MoneyMath\Decimal2
+     */
+    public function multiply($number){
         if ($number instanceof Decimal2) {
             return self::mul($this, $number);
         } else {
@@ -392,7 +404,11 @@ class Decimal2 extends Object {
         }
     }
 
-    public function divide(Decimal2 $number){
+    /**
+     * @param int|string|float|Decimal2 $number
+     * @return \MoneyMath\Decimal2
+     */
+    public function divide($number){
         if ($number instanceof Decimal2) {
             return self::div($this, $number);
         } else {
@@ -400,6 +416,10 @@ class Decimal2 extends Object {
         }
     }
 
+    /**
+     * @param int $number
+     * @return \MoneyMath\Decimal2
+     */
     public function multiplyBy($integer){
         return self::staticMultiply($this, $integer);
     }
