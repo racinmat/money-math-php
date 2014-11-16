@@ -428,4 +428,35 @@ class Decimal2 extends Object {
         return self::staticMultiply($this, $integer);
     }
 
+    public function isZero() {
+        $zero = $this->amount->from(0);
+        return $this->amount->compare($zero) === 0;
+    }
+
+    /** @return bool */
+    public function isPositive() {
+        $zero = $this->from(0);
+        return $this->compare($zero) > 0;
+    }
+
+    /** @return bool */
+    public function isNegative() {
+        $zero = $this->from(0);
+        return $this->compare($zero) < 0;
+    }
+
+    /**
+     * Works only when no cents are present.
+     * @param $number
+     * @return \MoneyMath\Decimal2
+     */
+    public function modulo($number){
+        $iter = $this->from($this->cents);
+        while($iter->divide($number)->isPositive()) {
+            $iter = $iter->divide($number);
+        }
+        $remainer = $iter->integerValue();
+        return static::from($remainer);
+    }
+
 }
